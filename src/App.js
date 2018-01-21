@@ -15,6 +15,8 @@ import Footer from './Components/Footer/footer'
 import Homepage from './Components/pages/Homepage'
 import Contacts from './Components/pages/contacts'
 import Login from './Components/pages/login'
+import Dashboard from './Components/pages/dashboard'
+import Create from './Components/pages/create'
 
 // Includes
 import './Assets/css/default.min.css'
@@ -33,6 +35,8 @@ class App extends Component {
         <Route exact path='/' component={Homepage} />
         <Route exact path='/Contacts' component={Contacts} />
         <Route exact path='/Login' component={Login} />
+        <Route exact path='/Dashboard' component={Dashboard} />
+        <Route exact path='/Create' component={Create} />
 
       <Footer />
 

@@ -20,6 +20,7 @@ class Header extends Component {
 
         <nav>
 
+          <RaisedButton label="Dashboard"  backgroundColor="Yellow" href="/Dashboard"  />
           <RaisedButton label="Login"  backgroundColor="Yellow" href="/Login"  />
 
 
