@@ -4,7 +4,6 @@ import Paper from 'material-ui/Paper'
 import Divider from 'material-ui/Divider'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
-import _default from '../../Assets/scss/_config.scss'
 
 class login extends Component {
   render() {

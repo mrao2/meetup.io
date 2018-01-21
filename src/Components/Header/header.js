@@ -1,15 +1,9 @@
 import React, { Component } from 'react'
-import AppBar from 'material-ui/AppBar';
-import {
-  Link
-} from 'react-router-dom'
 import RaisedButton from 'material-ui/RaisedButton'
 
 
 class Header extends Component {
   render() {
-    const style = {
-      backgroundcolor: "red" }
     return (
     	<header>
 

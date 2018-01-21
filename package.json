@@ -6,11 +6,13 @@
     "material-ui": "^0.20.0",
     "material-ui-community-icons": "^0.15.0",
     "meetup-api": "^1.4.30",
+    "oauth-1.0a": "^2.2.3",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-flexbox-grid": "^2.0.0",
     "react-router": "^4.2.0",
-    "react-scripts": "^1.1.0"
+    "react-scripts": "^1.1.0",
+    "request": "^2.83.0"
   },
   "scripts": {
     "start": "react-scripts start",
