@@ -17,6 +17,7 @@ import Contacts from './Components/pages/contacts'
 import Login from './Components/pages/login'
 import Dashboard from './Components/pages/dashboard'
 import Create from './Components/pages/create'
+import eventPage from './Components/pages/eventPage'
 
 // Includes
 import './Assets/css/default.min.css'
@@ -37,6 +38,8 @@ class App extends Component {
         <Route exact path='/Login' component={Login} />
         <Route exact path='/Dashboard' component={Dashboard} />
         <Route exact path='/Create' component={Create} />
+        <Route exact path='/eventPage' component={eventPage} />
+
 
       <Footer />
 
