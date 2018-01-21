@@ -1,0 +1,52 @@
+@import "_config.scss";
+
+header {
+	font-family: 'Roboto', sans-serif;
+	position: relative;
+	display: block;
+	width: 100%;
+	background: $black;
+	color: $white;
+	height: 60px;
+
+	.logo {
+		position: absolute;
+		top: 50%; left: 15px;
+		@include translateY(-50%);
+	}
+
+	nav,
+	nav ul {
+		margin: 0;
+		padding: 0;
+	}
+
+	nav {
+		position: absolute;
+		top: 50%; right: 15px;
+		@include translateY(-50%);
+
+
+
+			&.last {
+				margin: 0;
+			}
+
+			a {
+				font-size: 15px;
+				line-height: normal;
+				color: $white;
+			}
+			headerButton {
+				position: absolute;
+				top: 50%; right: 15px;
+				margin-right: 20px;
+				@include translateY(-50%);
+			}
+		}
+
+}
+
+.logincard {
+	padding: 20px;
+}
