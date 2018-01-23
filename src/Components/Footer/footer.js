@@ -4,7 +4,8 @@ class Footer extends Component {
   render() {
     return (
     	<footer id="mainFooter">
-  Footer
+      <br/>
+      Created by Mohith Rao
 
     	</footer>
     )

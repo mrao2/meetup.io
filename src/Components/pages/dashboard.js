@@ -9,68 +9,40 @@ import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+import ActionInfo from 'material-ui/svg-icons/action/info';
+import ContentSend from 'material-ui/svg-icons/content/send';
+
 
 class Dashboard extends Component {
   render() {
-    const styles = {
-        root: {
-          display: 'flex',
-          flexWrap: 'wrap',
-          tileBackground: 'Red'
+    var meetup = require('meetup-api')({
+       key: '5f32d183226637a717a283f397e65'
+    });
 
-        },
-        gridList: {
-          width: 800,
-          height: 450,
-          overflowY: 'auto',
-        },
-      };
+    meetup.getRSVPs({
+       event_id: 246436583,
+       urlname: 'banodejs'
+    }, function(err, resp) {
+       if (err) {
+           console.error('Found meetup error', err);
+       }
+       //console.log(JSON.stringify(resp, null, 2));
 
-      const tilesData = [
-        {
-          img: 'images/grid-list/00-52-29-429_640.jpg',
-          title: 'Breakfast' ,
-          author: 'jill111',
-        },
-        {
-          img: 'images/grid-list/burger-827309_640.jpg',
-          title: 'Tasty burger',
-          author: 'pashminu',
-        },
-        {
-          img: 'images/grid-list/camera-813814_640.jpg',
-          title: 'Camera',
-          author: 'Danson67',
-        },
-        {
-          img: 'images/grid-list/morning-819362_640.jpg',
-          title: 'Morning',
-          author: 'fancycrave1',
-        },
-        {
-          img: 'images/grid-list/hats-829509_640.jpg',
-          title: 'Hats',
-          author: 'Hans',
-        },
-        {
-          img: 'images/grid-list/honey-823614_640.jpg',
-          title: 'Honey',
-          author: 'fancycravel',
-        },
-        {
-          img: 'images/grid-list/vegetables-790022_640.jpg',
-          title: 'Vegetables',
-          author: 'jill111',
-        },
-        {
-          img: 'images/grid-list/water-plant-821293_640.jpg',
-          title: 'Water plant',
-          author: 'BkrmadtyaKarki',
-        },
-      ];
+       const namesOfPeopleWhoRSVPD = resp.results
+        .map(rsvp => rsvp.member.name)
+       console.log(namesOfPeopleWhoRSVPD);
+
+        const nameOfEvent = resp.results
+            .map(rsvp => rsvp.event.name)
+        const [first] = nameOfEvent
+        console.log(first);
+
+
+    });
+
     return (
     	<div className="container-fluid">
-        <div className="bodyHeader">
+        <div classname="bodyHeader">
             <h1>
     	    		Welcome to your Dashboard!
     	    	</h1>
@@ -78,41 +50,19 @@ class Dashboard extends Component {
               "Please choose your organization and event to get started."
             </p>
         </div>
-        <div className="orgList">
+        <div classname="orgList">
           <Row>
           <Col sm={2} lg={4}>
           <Paper zDepth={2}>
           <List>
-          <Subheader>Organizations</Subheader>
-            <ListItem primaryText="Org 1"   />
+          <Subheader>Events</Subheader>
+            <ListItem primaryText="Org 1" rightIcon={<IconButton href="/eventPage"><ContentSend href="/eventPage" /></IconButton>}  />
             <ListItem primaryText="Org 2"  />
             <ListItem primaryText="Org 3"  />
             <ListItem primaryText="Org 4"  />
           </List>
           </Paper>
           </Col>
-          <Col xsOffset={1} xs={8} lg={5}>
-            <Paper zDepth={2}>
-            <div style={styles.root}>
-              <GridList
-                cellHeight={180}
-                style={styles.gridList}
-              >
-              <Subheader>Events</Subheader>
-                  {tilesData.map((tile) => (
-                    <GridTile
-                      key={tile.img}
-                      title={tile.title}
-                      subtitle={<span>by <b>{tile.author}</b></span>}
-                      actionIcon={<IconButton href="/eventPage"><StarBorder color="white" /></IconButton>}
-                    >
-                      <img src={tile.img} />
-                    </GridTile>
-                  ))}
-                </GridList>
-              </div>
-              </Paper>
-              </Col>
           </Row>
         </div>
 
