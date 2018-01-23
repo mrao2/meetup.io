@@ -28,8 +28,6 @@ class eventPage extends Component {
            open: false,
          });
        };
-       const firstPart = 'Thank you, ',
-           secondPart = ' for signing in! ';
   render() {
     return (
     	<div className="container-fluid">
@@ -43,9 +41,9 @@ class eventPage extends Component {
          <Row>
          <Col mdOffset={4} xs={3}>
          <Paper zDepth={2}>
-          <TextField hintText='First Name' id='firstname'/>
+          <TextField hintText='First Name' />
           <br/>
-          <TextField hintText='Last Name'id='lastname'/>
+          <TextField hintText='Last Name'/>
           <br/>
 
           <Col xsOffset={3} xs={2}>
@@ -54,7 +52,7 @@ class eventPage extends Component {
 
           <Snackbar
          open={this.state.open}
-         message=firstPart + firstname + secondPart
+         message="Thank you for signing in!"
          autoHideDuration={4000}
          onRequestClose={this.handleRequestClose}
        />
