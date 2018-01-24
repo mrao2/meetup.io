@@ -12,14 +12,24 @@ import Snackbar from 'material-ui/Snackbar';
 class eventPage extends Component {
   constructor(props) {
     super(props);
+
       this.state = {
            open: false,
+           firstName: '',
+           lastName: '',
          };
-       }
-
-       handleClick = () => {
+       };
+       change = (e) => {
+        this.setState({
+          [e.target.name]: e.target.value
+        });
+       };
+       onSubmit = () => {
+         console.log(this.state)
          this.setState({
            open: true,
+           firstName: '',
+           lastName: '',
          });
        };
 
@@ -33,22 +43,36 @@ class eventPage extends Component {
     	<div className="container-fluid">
 
 	    	<h1>
-	    		first
+         Login to your event!
 	    	</h1>
 
         <br/>
+
          <div clasName='form'>
          <Row>
          <Col mdOffset={4} xs={3}>
          <Paper zDepth={2}>
-          <TextField hintText='First Name' />
+         <TextField
+             name="firstName"
+             hintText="First name"
+             floatingLabelText="First name"
+             value={this.state.firstName}
+             onChange={e => this.change(e)}
+             floatingLabelFixed
+           />
           <br/>
-          <TextField hintText='Last Name'/>
+          <TextField
+            name="lastName"
+            hintText="Last Name"
+            floatingLabelText="Last Name"
+            value={this.state.lastName}
+            onChange={e => this.change(e)}
+            floatingLabelFixed
+          />
           <br/>
-
           <Col xsOffset={3} xs={2}>
           <br/>
-          <RaisedButton label="Login"  backgroundColor="darkGrey" onClick={this.handleClick}/>
+          <RaisedButton label="Login"  backgroundColor="darkGrey" onClick={() => this.onSubmit()}/>
 
           <Snackbar
          open={this.state.open}

@@ -14,31 +14,9 @@ import ContentSend from 'material-ui/svg-icons/content/send';
 
 
 class Dashboard extends Component {
+
   render() {
-    var meetup = require('meetup-api')({
-       key: '5f32d183226637a717a283f397e65'
-    });
-
-    meetup.getRSVPs({
-       event_id: 246436583,
-       urlname: 'banodejs'
-    }, function(err, resp) {
-       if (err) {
-           console.error('Found meetup error', err);
-       }
-       //console.log(JSON.stringify(resp, null, 2));
-
-       const namesOfPeopleWhoRSVPD = resp.results
-        .map(rsvp => rsvp.member.name)
-       console.log(namesOfPeopleWhoRSVPD);
-
-        const nameOfEvent = resp.results
-            .map(rsvp => rsvp.event.name)
-        const [first] = nameOfEvent
-        console.log(first);
-
-
-    });
+    
 
     return (
     	<div className="container-fluid">
@@ -56,7 +34,7 @@ class Dashboard extends Component {
           <Paper zDepth={2}>
           <List>
           <Subheader>Events</Subheader>
-            <ListItem primaryText="Org 1" rightIcon={<IconButton href="/eventPage"><ContentSend href="/eventPage" /></IconButton>}  />
+            <ListItem primaryText= "OpenSTL" href= "/results" rightIcon={<IconButton href="/eventPage"><ContentSend href="/eventPage" /></IconButton>}  />
             <ListItem primaryText="Org 2"  />
             <ListItem primaryText="Org 3"  />
             <ListItem primaryText="Org 4"  />

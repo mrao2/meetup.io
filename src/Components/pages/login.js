@@ -35,7 +35,7 @@ class login extends Component {
         <Row>
           <Col xsOffset={2} xs={8}>
             <Paper zDepth={2}>
-                <TextField hintText="Password" underlineShow={false} id="pass" />
+                <TextField hintText="Password" underlineShow={false} id="pass" type="password" />
                 <Divider />
                 </Paper>
           </Col>
