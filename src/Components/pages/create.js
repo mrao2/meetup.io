@@ -12,8 +12,8 @@ import dbConnect from '../../dbConnect'
 });*/
 
 class Create extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       userName: '',
       password: '',
@@ -30,18 +30,18 @@ class Create extends Component {
 
   onSubmit = (e) => {
     console.log(this.state)
-    fetch('/users', {
-         method: 'POST',
-         data: {
-           userName: this.state.userName,
-           password: this.state.password,
-         }
-       })
-       .then(function(response) {
-         return response.json()
-       }).then(function(body) {
-         console.log(body);
-       });
+    // fetch('/create', {
+    //      method: 'POST',
+    //      body: JSON.stringify({
+    //        userName: this.state.userName,
+    //        password: this.state.password,
+    //      })
+    //    })
+    //    .then((response) => {
+    //      return response.json()
+    //    }).then((body) => {
+    //      console.log(body);
+    //    });
 
     this.setState({
       userName: '',

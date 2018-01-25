@@ -9,11 +9,12 @@ import results from './results';
 
 
 
-
+var multiNames = []
 class eventPage extends Component {
   constructor(props) {
       super(props)
       this.onSubmit = this.onSubmit.bind(this);
+      this.getResults = this.getResults.bind(this);
 
       this.state = {
            open: false,
@@ -33,7 +34,7 @@ class eventPage extends Component {
          const fullName = `${this.state.firstName} ${this.state.lastName}`
          const allNames= this.state.allNames
          console.log(fullName)
-         allNames.push(fullName)
+         multiNames.push(fullName)
          console.log(allNames)
 
 
@@ -41,7 +42,7 @@ class eventPage extends Component {
            open: true,
            firstName: '',
            lastName: '',
-           allNames: allNames
+
          });
        };
 
@@ -51,7 +52,11 @@ class eventPage extends Component {
          });
        };
       getResults = () => {
-        return this.allNames;
+        this.setState({
+          allNames:multiNames
+        })
+
+      //  return this.allNames;
 
       };
   render() {
@@ -107,7 +112,7 @@ class eventPage extends Component {
 
          <div className='results'>
          <Col mdOffset={2} xs={12}>
-         <RaisedButton label='Get results'  backgroundColor="darkGrey"  onClick={this.getResults()} />
+         <RaisedButton label='Get results'  backgroundColor="darkGrey"  onClick={this.getResults} />
          <Col lg={12}>
           <Paper>
             <h4>List of people who came: </h4>
