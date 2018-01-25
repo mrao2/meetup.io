@@ -8,12 +8,14 @@
     "material-ui-community-icons": "^0.15.0",
     "meetup-api": "^1.4.30",
     "mysql": "^2.15.0",
+    "mysql2": "^1.5.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-flexbox-grid": "^2.0.0",
     "react-router": "^4.2.0",
     "react-scripts": "^1.1.0",
-    "react-tap-event-plugin": "^3.0.2"
+    "react-tap-event-plugin": "^3.0.2",
+    "sequelize": "^4.32.1"
   },
   "scripts": {
     "start": "react-scripts start",

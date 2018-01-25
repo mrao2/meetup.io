@@ -5,31 +5,43 @@ import RaisedButton from 'material-ui/RaisedButton'
 import Paper from 'material-ui/Paper';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Snackbar from 'material-ui/Snackbar';
+import results from './results';
 
 
 
 
 class eventPage extends Component {
   constructor(props) {
-    super(props);
+      super(props)
+      this.onSubmit = this.onSubmit.bind(this);
 
       this.state = {
            open: false,
            firstName: '',
            lastName: '',
+           allNames: [],
          };
+
        };
        change = (e) => {
         this.setState({
           [e.target.name]: e.target.value
         });
+
        };
        onSubmit = () => {
-         console.log(this.state)
+         const fullName = `${this.state.firstName} ${this.state.lastName}`
+         const allNames= this.state.allNames
+         console.log(fullName)
+         allNames.push(fullName)
+         console.log(allNames)
+
+
          this.setState({
            open: true,
            firstName: '',
            lastName: '',
+           allNames: allNames
          });
        };
 
@@ -38,8 +50,13 @@ class eventPage extends Component {
            open: false,
          });
        };
+      getResults = () => {
+        return this.allNames;
+
+      };
   render() {
     return (
+
     	<div className="container-fluid">
 
 	    	<h1>
@@ -48,9 +65,9 @@ class eventPage extends Component {
 
         <br/>
 
-         <div clasName='form'>
          <Row>
-         <Col mdOffset={4} xs={3}>
+         <div className='form'>
+         <Col mdOffset={1} xs={12}>
          <Paper zDepth={2}>
          <TextField
              name="firstName"
@@ -70,9 +87,11 @@ class eventPage extends Component {
             floatingLabelFixed
           />
           <br/>
-          <Col xsOffset={3} xs={2}>
+          <Col xsOffset={2} xs={2}>
           <br/>
           <RaisedButton label="Login"  backgroundColor="darkGrey" onClick={() => this.onSubmit()}/>
+
+
 
           <Snackbar
          open={this.state.open}
@@ -80,12 +99,28 @@ class eventPage extends Component {
          autoHideDuration={4000}
          onRequestClose={this.handleRequestClose}
        />
+
           </Col>
         </Paper>
         </Col>
-        </Row>
          </div>
 
+         <div className='results'>
+         <Col mdOffset={2} xs={12}>
+         <RaisedButton label='Get results'  backgroundColor="darkGrey"  onClick={this.getResults()} />
+         <Col lg={12}>
+          <Paper>
+            <h4>List of people who came: </h4>
+
+            <h3>
+              {JSON.stringify(this.state.allNames, null, 2)}
+            </h3>
+          </Paper>
+          </Col>
+          </Col>
+
+         </div>
+         </Row>
     	</div>
 
 

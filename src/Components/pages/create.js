@@ -1,22 +1,26 @@
 import React, { Component } from 'react'
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
+import dbConnect from '../../dbConnect'
 
-var mysql = require('mysql');
-var con = mysql.createConnection({
+
+/*var con = mysql.createConnection({
   host: "localhost",
   user: "meetupapp",
   password: "pass",
-  database: "meetupapp"
-});
+  database: "meetupapp",
+});*/
 
 class Create extends Component {
-  state = {
-    userName: '',
-    password: '',
-
-
+  constructor() {
+    super();
+    this.state = {
+      userName: '',
+      password: '',
+    }
+    this.onSubmit = this.onSubmit.bind(this);
   }
+
 
   change = (e) => {
    this.setState({
@@ -24,24 +28,26 @@ class Create extends Component {
    });
   };
 
-  onSubmit = () => {
+  onSubmit = (e) => {
     console.log(this.state)
-    var sql = "INSERT INTO login (userName, password) VALUES (this.state.userName, this.state.password)";
-    con.query(sql, function (err, result) {
-      if (err) throw err;
-      console.log("1 record inserted");
-    });
+    fetch('/users', {
+         method: 'POST',
+         data: {
+           userName: this.state.userName,
+           password: this.state.password,
+         }
+       })
+       .then(function(response) {
+         return response.json()
+       }).then(function(body) {
+         console.log(body);
+       });
+
     this.setState({
       userName: '',
       password: '',
     });
   };
-
-
-
-
-
-
 
   render() {
     return (
